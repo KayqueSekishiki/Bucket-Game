@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 4f;
+    [SerializeField] private float speed = 10f;
     void Start()
     {
 
