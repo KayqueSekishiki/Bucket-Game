@@ -5,14 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
-    void Start()
-    {
-
-    }
-
 
     void Update()
     {
+        if (!GameManager.Instance.isGameActive) return;
+
         bool isPressingLeft = Input.GetKey(KeyCode.LeftArrow);
         bool isPressingRight = Input.GetKey(KeyCode.RightArrow);
 
@@ -22,5 +19,15 @@ public class PlayerController : MonoBehaviour
 
         if (isPressingLeft) movement *= -1f;
         transform.position += new Vector3(movement, 0, 0);
+
+        float movementLimit = (GameManager.Instance.gameWidth - 2) / 2;
+        if (transform.position.x < -movementLimit)
+        {
+            transform.position = new Vector3(-movementLimit, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > movementLimit)
+        {
+            transform.position = new Vector3(movementLimit, transform.position.y, transform.position.z);
+        }
     }
 }

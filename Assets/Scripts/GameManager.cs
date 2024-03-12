@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public float gameWidth = 30;
     [HideInInspector] public int score = 0;
+    [HideInInspector] public bool isGameActive = true;
 
     private void Awake()
     {

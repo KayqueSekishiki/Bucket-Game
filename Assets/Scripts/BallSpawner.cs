@@ -10,7 +10,6 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private float _spawmInterval = 1;
     [SerializeField] private float _cooldown = 1;
 
-    [SerializeField] private GameManager gameManager;
     void Start()
     {
 
@@ -19,6 +18,8 @@ public class BallSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.isGameActive) return;
+
         _cooldown -= Time.deltaTime;
         if (_cooldown <= 0f)
         {
