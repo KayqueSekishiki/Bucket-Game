@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public float gameWidth = 30;
+    [HideInInspector] public int score = 0;
 
     private void Awake()
     {
